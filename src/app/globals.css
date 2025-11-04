@@ -24,3 +24,43 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animações para elementos festivos */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 0, 0.8);
+  }
+}
+
+/* Melhorias para dispositivos móveis */
+@media (max-width: 640px) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  
+  /* Prevenir zoom em inputs no iOS */
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+/* Efeitos de brilho para botões principais */
+.glow-effect {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Otimizações para toque em dispositivos móveis */
+@media (hover: none) {
+  button, a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
