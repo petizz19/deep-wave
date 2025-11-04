@@ -1,0 +1,67 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" style="background-color:#0A0314;">
+  <defs>
+    <!-- 
+      FILTRO NEON OTIMIZADO
+      Este filtro cria um brilho atrás do objeto original, mantendo o texto 100% nítido.
+      - feMorphology: Engrossa levemente a forma para criar a base do brilho.
+      - feGaussianBlur: Borra a forma engrossada para criar o brilho suave.
+      - feFlood: Define a cor do brilho.
+      - feComposite: Pinta o brilho com a cor definida.
+      - feMerge: Coloca o brilho (coloredGlow) por baixo do texto original (SourceGraphic).
+    -->
+    <filter id="sharpNeonPink" x="-50%" y="-50%" width="200%" height="200%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="dilated"/>
+      <feGaussianBlur in="dilated" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#F408FE" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="coloredGlow"/>
+      <feMerge>
+        <feMergeNode in="coloredGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="sharpNeonCyan" x="-50%" y="-50%" width="200%" height="200%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="dilated"/>
+      <feGaussianBlur in="dilated" stdDeviation="3.5" result="blur"/>
+      <feFlood flood-color="#0FF3FE" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="coloredGlow"/>
+      <feMerge>
+        <feMergeNode in="coloredGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fundo escuro para destacar o neon -->
+  <rect width="100%" height="100%" fill="#0A0314"/>
+
+  <!-- LOGO DEEP WAVE -->
+  <g font-family="Montserrat, sans-serif" font-weight="800" letter-spacing="2">
+    
+    <!-- Linha Superior: DEEP + Headphone -->
+    <g filter="url(#sharpNeonPink)" font-size="70">
+      <!-- Texto "DEE" -->
+      <text x="55" y="100" fill="#FFC9FD">DEE</text>
+      
+      <!-- Ícone do Headphone (desenhado com paths) -->
+      <g stroke="#FFC9FD" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 208 58 C 190 58 190 102 208 102"/>
+        <path d="M 232 58 C 250 58 250 102 232 102"/>
+        <path d="M 208 58 C 213 35 227 35 232 58"/>
+      </g>
+    </g>
+    
+    <!-- Linha Inferior: WAVE -->
+    <g filter="url(#sharpNeonCyan)" font-size="70">
+      <!-- Letra "W" -->
+      <text x="60" y="180" fill="#B5FDFF">W</text>
+      
+      <!-- Letra "A" estilizada (desenhada com path) -->
+      <path d="M 143 180 L 165 135 L 187 180" stroke="#B5FDFF" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      
+      <!-- Texto "VE" -->
+      <text x="192" y="180" fill="#B5FDFF">VE</text>
+    </g>
+    
+  </g>
+</svg>

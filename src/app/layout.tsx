@@ -9,30 +9,21 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://deepwave.com.br'),
-  title: "CLX - Evento de Música Eletrônica | Promoção Imperdível",
-  description: "🔥 PROMOÇÃO IMPERDÍVEL! Evento de música eletrônica da CLX. Ingressos limitados com desconto especial. Não perca!",
-  keywords: ["CLX", "música eletrônica", "festa", "promoção", "ingressos", "evento", "eletrônica"],
-  authors: [{ name: "CLX Events" }],
+  title: "Deep Wave - 1ª Festa de Música Eletrônica da Cidade Baixa | Casadinha R$ 60",
+  description: "🔥 CASADINHA ESPECIAL! 2 ingressos por R$ 60 na 1ª festa de música eletrônica da Cidade Baixa/Ribeira em Salvador. Atendente 24h!",
+  keywords: ["Deep Wave", "Cidade Baixa", "música eletrônica", "festa", "casadinha", "ingressos", "Salvador", "Ribeira", "Espaço Bombordo", "PHStudios"],
+  authors: [{ name: "PHStudios - Programador e Desenvolvedor®" }],
   openGraph: {
-    title: "CLX - Evento de Música Eletrônica | Promoção Imperdível",
-    description: "🔥 PROMOÇÃO IMPERDÍVEL! Evento de música eletrônica da CLX. Ingressos limitados com desconto especial. Não perca!",
+    title: "Deep Wave - 1ª Festa de Música Eletrônica da Cidade Baixa | Casadinha R$ 60",
+    description: "🔥 CASADINHA ESPECIAL! 2 ingressos por R$ 60 na 1ª festa de música eletrônica da Cidade Baixa/Ribeira em Salvador. Atendente 24h!",
     type: "website",
     locale: "pt_BR",
     url: "https://deepwave.com.br",
-    images: [
-      {
-        url: "/logo.svg",
-        width: 200,
-        height: 60,
-        alt: "CLX Event Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CLX - Evento de Música Eletrônica | Promoção Imperdível",
-    description: "🔥 PROMOÇÃO IMPERDÍVEL! Evento de música eletrônica da CLX. Ingressos limitados com desconto especial. Não perca!",
-    images: ["/logo.svg"],
+    title: "Deep Wave - 1ª Festa de Música Eletrônica da Cidade Baixa | Casadinha R$ 60",
+    description: "🔥 CASADINHA ESPECIAL! 2 ingressos por R$ 60 na 1ª festa de música eletrônica da Cidade Baixa/Ribeira em Salvador. Atendente 24h!",
   },
   robots: {
     index: true,

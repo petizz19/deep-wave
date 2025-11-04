@@ -108,7 +108,18 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
     >
       <div className="font-black tracking-wide">{title}</div>
       {subtitle && (
-        <div className="text-sm sm:text-base mt-1 sm:mt-2 opacity-90 font-medium">{subtitle}</div>
+        <div className="text-sm sm:text-base mt-1 sm:mt-2 opacity-90 font-medium">
+          {subtitle.includes('ECONOMIZE') ? (
+            <>
+              {subtitle.split('ECONOMIZE')[0]}
+              <span className="font-black text-red-600 text-base sm:text-lg animate-pulse drop-shadow-sm">
+                ECONOMIZE R$ 20!
+              </span>
+            </>
+          ) : (
+            subtitle
+          )}
+        </div>
       )}
     </a>
   )
