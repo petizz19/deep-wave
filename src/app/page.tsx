@@ -38,7 +38,7 @@ export default function Home() {
             
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 mt-4">
               <p className="text-lg sm:text-xl font-bold">
-                📅 Sábado, 22 de Novembro - 21h
+                📅 Sábado, 22 de Novembro - <span className="text-yellow-300 text-xl sm:text-2xl font-black animate-pulse">21h</span>
               </p>
               <a
                 href="https://maps.app.goo.gl/nZpoB296xDwBPUCm9"
@@ -70,13 +70,19 @@ export default function Home() {
         {/* Promoção Destaque */}
         <div className="w-full max-w-md mb-6">
           <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-black text-xl sm:text-2xl py-3 px-6 rounded-xl shadow-2xl transform rotate-1 neon-border glitch-effect animate-pulse">
-            🔥 PROMOÇÃO IMPERDÍVEL 🔥
+            🔥 PROMOÇÃO IMPERDÍVEL
           </div>
         </div>
 
         {/* Action Buttons */}
         <div className="w-full max-w-md space-y-3 sm:space-y-4">
           {/* Main Offer - Casadinha */}
+          <div className="mb-4 sm:hidden">
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-lg py-2 px-4 rounded-lg shadow-lg transform rotate-1 animate-pulse">
+              ⏰ 2 HORAS DE OPEN BAR!
+            </div>
+          </div>
+          
           <ActionButton
             title="CASADINHA (R$ 60,00)"
             subtitle="⚡ 2 INGRESSOS POR APENAS R$ 60! ECONOMIZE R$ 20"
