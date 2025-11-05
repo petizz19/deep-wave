@@ -86,7 +86,7 @@ export default function Home() {
           <ActionButton
             title="CASADINHA (R$ 60,00)"
             subtitle="⚡ 2 INGRESSOS POR APENAS R$ 60! ECONOMIZE R$ 20"
-            href="https://wa.link/zx7yjj"
+            href="https://www.wa.link/zx7yjj"
             variant="primary"
           />
 
@@ -94,7 +94,7 @@ export default function Home() {
           <ActionButton
             title="INGRESSO INDIVIDUAL (R$ 40,00)"
             subtitle="🎵 1 INGRESSO POR R$ 40"
-            href="https://wa.link/zx7yjj"
+            href="https://www.wa.link/zx7yjj"
             variant="secondary"
           />
 
@@ -109,7 +109,7 @@ export default function Home() {
           <ActionButton
             title="💬 ATENDENTE 24 HORAS NO WHATSAPP!"
             subtitle="🚀 RESPOSTA IMEDIATA | COMPRA JÁ!"
-            href="https://wa.link/zx7yjj"
+            href="https://www.wa.link/zx7yjj"
             variant="primary"
           />
 
@@ -117,7 +117,7 @@ export default function Home() {
           <ActionButton
             title="⭐ ENTRAR NA COMUNIDADE VIP"
             subtitle="🔥 Conteúdo exclusivo e vantagens"
-            href="https://chat.whatsapp.com/Gm1IfuIbOGs4ss19RzRNOU"
+            href="https://www.chat.whatsapp.com/Gm1IfuIbOGs4ss19RzRNOU"
             variant="tertiary"
           />
         </div>
