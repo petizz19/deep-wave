@@ -140,7 +140,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group"
             >
-              <span className="text-sm">Desenvolvido por</span>
+              <span className="text-sm">Site Desenvolvido por</span>
               <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400 group-hover:from-pink-300 group-hover:to-cyan-300 transition-all duration-300">
                 PHStudio
               </span>
