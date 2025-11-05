@@ -99,7 +99,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
     <a
       href={href}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer nofollow"
       onClick={handleClick}
       className={`
         block w-full max-w-md mx-auto rounded-xl p-3 sm:p-4 text-center
