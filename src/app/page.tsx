@@ -117,7 +117,7 @@ export default function Home() {
           <ActionButton
             title="⭐ ENTRAR NA COMUNIDADE VIP"
             subtitle="🔥 Conteúdo exclusivo e vantagens"
-            href="https://www.chat.whatsapp.com/Gm1IfuIbOGs4ss19RzRNOU"
+            href="https://chat.whatsapp.com/Gm1IfuIbOGs4ss19RzRNOU?mode=wwt"
             variant="tertiary"
           />
         </div>
