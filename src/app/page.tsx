@@ -86,7 +86,7 @@ export default function Home() {
           <ActionButton
             title="CASADINHA (R$ 60,00)"
             subtitle="⚡ 2 INGRESSOS POR APENAS R$ 60! ECONOMIZE R$ 20"
-            href="https://www.wa.link/zx7yjj"
+            href="https://wa.link/9pevoy"
             variant="primary"
           />
 
@@ -94,7 +94,7 @@ export default function Home() {
           <ActionButton
             title="INGRESSO INDIVIDUAL (R$ 40,00)"
             subtitle="🎵 1 INGRESSO POR R$ 40"
-            href="https://www.wa.link/zx7yjj"
+            href="https://wa.link/2gcroo"
             variant="secondary"
           />
 

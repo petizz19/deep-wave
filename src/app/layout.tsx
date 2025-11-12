@@ -47,11 +47,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://www.deepwave.com.br" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#0a0a0a" />
       </head>
       <body className={`${inter.className} antialiased`}>
         {children}
