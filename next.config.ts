@@ -1,11 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Configuração do Turbopack para evitar conflitos
+  turbopack: {
+    // Configurações vazias para silenciar o aviso
+  },
   // Otimização de imagens
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 dias
   },
   
   // Otimização de build
@@ -13,7 +18,7 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Headers de segurança e performance
+  // Headers de segurança e performance - otimizados
   headers: async () => [
     {
       source: '/(.*)',
@@ -38,9 +43,14 @@ const nextConfig: NextConfig = {
           key: 'Cross-Origin-Opener-Policy',
           value: 'same-origin',
         },
+      ],
+    },
+    {
+      source: '/_next/static/(.*)',
+      headers: [
         {
-          key: 'Content-Security-Policy',
-          value: "default-src 'self' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src 'self' data: *; font-src 'self' data: *; connect-src 'self' *;",
+          key: 'Cache-Control',
+          value: 'public, max-age=31536000, immutable',
         },
       ],
     },
@@ -48,17 +58,47 @@ const nextConfig: NextConfig = {
       source: '/(.*)',
       headers: [
         {
-          key: 'Strict-Transport-Security',
-          value: 'max-age=31536000; includeSubDomains; preload',
+          key: 'Cache-Control',
+          value: 'public, max-age=31536000, immutable',
+        },
+      ],
+      has: [
+        {
+          type: 'header',
+          key: 'content-type',
+          value: 'image/(.*)',
         },
       ],
     },
     {
-      source: '/logo.svg',
+      source: '/(.*)',
       headers: [
         {
           key: 'Cache-Control',
           value: 'public, max-age=31536000, immutable',
+        },
+      ],
+      has: [
+        {
+          type: 'header',
+          key: 'content-type',
+          value: 'text/css',
+        },
+      ],
+    },
+    {
+      source: '/(.*)',
+      headers: [
+        {
+          key: 'Cache-Control',
+          value: 'public, max-age=31536000, immutable',
+        },
+      ],
+      has: [
+        {
+          type: 'header',
+          key: 'content-type',
+          value: 'application/javascript',
         },
       ],
     },
@@ -69,6 +109,51 @@ const nextConfig: NextConfig = {
   
   // Powered by header removal
   poweredByHeader: false,
+  
+  // Otimizações experimentais para performance
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['react', 'react-dom'],
+    scrollRestoration: true,
+  },
+  
+  // Otimização de bundle
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      }
+    }
+    
+    // Otimização para produção
+    if (process.env.NODE_ENV === 'production') {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            priority: -10,
+            chunks: 'all',
+          },
+          react: {
+            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            name: 'react',
+            priority: 20,
+            chunks: 'all',
+          },
+        },
+      }
+    }
+    
+    return config
+  },
 };
 
 export default nextConfig;

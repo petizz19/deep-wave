@@ -2,8 +2,12 @@
 
 import Image from 'next/image'
 import { ActionButton } from '@/components/ActionButton'
-import { PixelTracker } from '@/components/PixelTracker'
-import { SoundWave } from '@/components/SoundWave'
+import dynamic from 'next/dynamic'
+
+// Lazy loading para componentes não críticos
+const PixelTracker = dynamic(() => import('@/components/PixelTracker').then(mod => ({ default: mod.PixelTracker })), {
+  ssr: false
+})
 
 export default function Home() {
   return (
@@ -26,14 +30,14 @@ export default function Home() {
               <span className="text-yellow-300">1ª</span> festa de música eletrônica da cidade baixa
             </p>
             
-            {/* Equalizador Simplificado */}
-            <div className="flex justify-center items-end space-x-1 h-8 my-3">
-              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '60%'}}></div>
-              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '80%'}}></div>
-              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '50%'}}></div>
-              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '90%'}}></div>
-              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '70%'}}></div>
-              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '85%'}}></div>
+            {/* Equalizador Simplificado - otimizado */}
+            <div className="flex justify-center items-end space-x-1 h-8 my-3" role="img" aria-label="Equalizador musical">
+              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '60%', willChange: 'height'}}></div>
+              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '80%', willChange: 'height'}}></div>
+              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '50%', willChange: 'height'}}></div>
+              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '90%', willChange: 'height'}}></div>
+              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '70%', willChange: 'height'}}></div>
+              <div className="w-1.5 bg-gradient-to-t from-pink-500 to-cyan-400 rounded-t" style={{height: '85%', willChange: 'height'}}></div>
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 mt-4">

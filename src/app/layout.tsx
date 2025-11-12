@@ -54,6 +54,18 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="color-scheme" content="dark" />
         <meta name="theme-color" content="#0a0a0a" />
+        
+        {/* Pré-carregamento de recursos críticos para performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//wa.link" />
+        <link rel="dns-prefetch" href="//www.instagram.com" />
+        <link rel="dns-prefetch" href="//connect.facebook.net" />
+        <link rel="dns-prefetch" href="//analytics.tiktok.com" />
+        
+        {/* Preload de fontes críticas */}
+        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
+        <link rel="preload" href="/_next/static/css/app/page.css" as="style" />
       </head>
       <body className={`${inter.className} antialiased`}>
         {children}

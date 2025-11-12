@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-import { usePixelTracker } from './PixelTracker'
+import React, { useCallback, useEffect, useState } from 'react'
 
 interface ActionButtonProps {
   title: string
@@ -11,25 +10,32 @@ interface ActionButtonProps {
   onClick?: () => void
 }
 
-export const ActionButton: React.FC<ActionButtonProps> = ({ 
-  title, 
-  subtitle, 
-  href, 
+export const ActionButton: React.FC<ActionButtonProps> = ({
+  title,
+  subtitle,
+  href,
   variant,
-  onClick 
+  onClick
 }) => {
-  const { trackPurchaseClick, trackContactClick } = usePixelTracker()
+  // Lazy loading do tracker
+  const [tracker, setTracker] = useState<{ trackPurchaseClick: Function, trackContactClick: Function } | null>(null)
+  
+  useEffect(() => {
+    import('./PixelTracker').then((trackerModule) => {
+      setTracker(trackerModule.usePixelTracker())
+    })
+  }, [])
 
-  const handleClick = () => {
-    // Track events based on button type
+  const handleClick = useCallback(() => {
+    // Track events based on button type - otimizado
     if (title.includes('INGRESSO') || title.includes('PROMOÇÃO')) {
       const ticketType = title.includes('CASAL') ? 'Casal' : 'Individual'
       const price = title.includes('60,00') ? 60.00 : 40.00
       
       // Enhanced tracking for ticket purchases
-      trackPurchaseClick(ticketType)
+      tracker?.trackPurchaseClick?.(ticketType)
       
-      // Additional Facebook Pixel events
+      // Facebook Pixel events - simplificados
       if (typeof window !== 'undefined' && window.fbq) {
         window.fbq('track', 'AddToCart', {
           content_name: `Ingresso ${ticketType}`,
@@ -37,16 +43,9 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
           value: price,
           currency: 'BRL'
         })
-        
-        window.fbq('track', 'ViewContent', {
-          content_name: `Ingresso ${ticketType}`,
-          content_category: 'Evento',
-          value: price,
-          currency: 'BRL'
-        })
       }
       
-      // TikTok events
+      // TikTok events - simplificados
       if (typeof window !== 'undefined' && window.ttq) {
         window.ttq.track('AddToCart', {
           content_name: `Ingresso ${ticketType}`,
@@ -56,9 +55,9 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
         })
       }
     } else if (href.includes('wa.link') || href.includes('whatsapp')) {
-      trackContactClick('WhatsApp')
+      tracker?.trackContactClick?.('WhatsApp')
       
-      // Additional WhatsApp tracking
+      // WhatsApp tracking - simplificado
       if (typeof window !== 'undefined' && window.fbq) {
         window.fbq('track', 'Contact', {
           content_name: 'WhatsApp',
@@ -66,9 +65,9 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
         })
       }
     } else if (href.includes('instagram')) {
-      trackContactClick('Instagram')
+      tracker?.trackContactClick?.('Instagram')
       
-      // Instagram tracking
+      // Instagram tracking - simplificado
       if (typeof window !== 'undefined' && window.fbq) {
         window.fbq('track', 'ViewContent', {
           content_name: 'Instagram',
@@ -80,7 +79,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
     if (onClick) {
       onClick()
     }
-  }
+  }, [title, href, tracker, onClick])
 
   const getButtonStyles = () => {
     switch (variant) {
